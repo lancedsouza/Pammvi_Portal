@@ -1,0 +1,15 @@
+  
+  {% extends "base.html" %}
+  {% block title %} Update Product {% endblock %}
+
+  {% block content%} 
+  <!-- Include this form in your template where the user can input the 'num' value -->
+   <form action="{{ url_for('enter_product_id.enter_product_id')}}" method="POST">
+    <label for="product_id">Enter Product id:</label>
+    <input type="text" name="product_id" id="product_id_" required>
+    <label for="product_attribute">Enter Product Attribute:</label>
+    <input type="text" name="product_attribute" id="product_attribute" required>
+    <input type="submit" value="Go">
+</form>
+
+{% endblock %}

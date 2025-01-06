@@ -1,24 +1,20 @@
-<!-- templates/home.html -->
+    {% extends "base.html" %}
+    {% block title %} {% endblock %}
 
-{% extends "base.html" %}
-{% block title %} Home Page {% endblock %}
-
-{% block content %}
-    <div class="container">
-        <h1> Welcome to Pammvi Import Export Software</h1>
-        <div class="navbar">
-            <!-- Your side navbar content goes here -->
+    {% block content %}
+    
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style1.css') }}">
+        <div class="container">
+            {% if current_user.is_authenticated%}
+            {% else %}
+            <p>Please register or login</p>
+            {%endif%}
+        <h1>{{current_user.username}}  Welcome to Pammvi Exports Website</h1>
             
-              
+                <!-- Your image at the top of the page -->
+                
+                <img  src="{{ url_for('static', filename='images/image.webp') }}" alt="Your Image" class="img-fluid">
+            </div>
 
-                           
-            
-            </ul>
         </div>
-        
-        <div class="content">
-            <!-- Your image in the middle of the page -->
-            <img src="{{ url_for('static', filename='images/image.webp') }}" alt="Your Image">
-        </div>
-    </div>
-{% endblock %}
+    {% endblock %}

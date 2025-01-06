@@ -49,8 +49,10 @@
         </p>
 
         <h2>PURCHASE ORDER</h2>
+        <form method="POST" action="{{ url_for('purchase_order.purchase_order') }}">
 
         <p>
+            
             <label for="Supplier_Name">Supplier_Name</label>
             <input type="text" name="Supplier_Name" id="Supplier_Name" required>
 
@@ -64,7 +66,10 @@
             <strong>Date:</strong> 
             <label for ="Date">Date </label>
             <input type="date" name="Date" id="Date" required>
+            
+       
         </p>
+    </form>
 
         <table id="data-table">
             <thead>
@@ -87,6 +92,8 @@
                 <!-- Add your table data dynamically here -->
                 <form method="POST" action="{{ url_for('purchase_order.purchase_order') }}">
                 <tr>
+                    
+
                     <td>
                         <input type="number" name="serial_number" class="sr.no" min="1" required>
                     </td>
@@ -127,7 +134,7 @@
             <tfoot><td>              
                         <input type=button  class="add_row" value="Add Row" onclick="addRow()"></button>
                     </td>
-                    <td><input type="submit" value="Submit Order">
+                    <td><input type=button  value="Submit Order">
                     </td>
                 </tr>
                 <tr>
@@ -138,6 +145,9 @@
             </tfoot>
         </form>
         </table>
+        <input type="hidden" name="total" id="total" value="0">
+        <input type="hidden" name="Net_Price" id="Net_Price" value="0">
+        <input type="hidden" name="hidden_total" id="hidden_total" value="0">
     </div>
 
     <script>
@@ -211,10 +221,13 @@
         }
         total.innerHTML = cal;
 
-        // Set the value of the hidden input field
+        // Set the values of the hidden input fields
+        document.getElementById("total").value = cal;
+        document.getElementById("Net_Price").value = calculateNetPrice();
         document.getElementById("hidden_total").value = cal;
     }
-        
+
+    // Add your calculateNetPrice() function if needed
     </script>
        
 </body>

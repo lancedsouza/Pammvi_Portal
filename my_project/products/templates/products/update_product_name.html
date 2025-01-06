@@ -1,0 +1,38 @@
+{% block content%} 
+
+    <!-- Include this form in your template where the user can input the 'num' value -->
+    <form action="{{ url_for('update_product.update_product')}}" method="POST">
+        <label for="Old_Product_name">Enter Old Product name:</label>
+        <input type="text" name="Old_Product_name" id="Old_Product_name" required>
+        <label for="New_Product_name">Enter New Product name:</label>
+        <input type="text" name="New_Product_name" id="New_Product_name" required>
+        <label for="New_Product_id">Enter New Product Id:</label>
+        <input type="text" name="New_Product_id" id="New_Product_id" required>
+        <label for="New_Supplier_ID">Enter New Supplier Id:</label>
+        <input type="text" name="New_Supplier_ID" id="New_Supplier_ID" required>
+        <label for="New_Product_category">Enter New Product Category:</label>
+        <input type="text" name="New_Product_category" id="New_Product_category" required>
+        <label for="New_Product_Vertical">Enter New Product Vertical:</label>
+        <input type="text" name="New_Product_Vertical" id="New_Product_Vertical" required>
+        <label for="Product_name">Enter New Product Ean Code</label>        
+        <input type="text" name="New_Product_ean_code" id="New_Product_ean_code" required>
+        <label for="New_Product_Color">Enter New Product Color</label>
+        <input type="text" name="New_Product_Color" id="New_Product_Color" required>
+        <label for="New_Product_Power">Enter New Product Power</label>
+        <input type="text" name="New_Product_Power" id="New_Product_Power" required>
+        <label for="New_Product_Label">Enter New Product Label</label>
+        <input type="text" name="New_Product_Label" id="New_Product_Label" required>
+        <label for="New_Product_Packing">Enter New Product Packing</label>
+        <input type="text" name="New_Product_Packing" id="New_Product_Packing" required>
+        <label for="New_Product_Qty">Enter New Product Qty</label>
+        <input type="text" name="New_Product_Qty" id="New_Product_Qty" required>
+        <label for="New_Product_currency">Enter New Product Currency</label>
+        <input type="text" name="New_Product_currency" id="New_Product_currency" required>
+        <label for="New_Product_Unit_price">Enter New Product Unit Price</label>
+        <input type="text" name="New_Product_Unit_price" id="New_Product_Unit_price" required>
+
+        
+        <input type="submit" value="Go">
+    </form>
+
+    {% endblock %}

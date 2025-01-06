@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %} Registration Form {% endblock %}
+
+{% block content%} 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h2>Register</h2>
+    <form  method="POST">
+        {{ form.hidden_tag() }}  <!-- CSRF protection -->
+        <div>
+            <label for="email">Email:</label>
+            {{ form.email() }}
+        </div>
+        <div>
+            <label for="username">Username:</label>
+            {{ form.username() }}
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            {{ form.password() }}
+        </div>
+        <div>
+            <label for="pass_confirm">Confirm Password:</label>
+            {{ form.pass_confirm() }}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
+{% endblock %}
