@@ -5,7 +5,7 @@ from my_project.models import User
 from flask_sqlalchemy import SQLAlchemy
 from my_project.models import db, login_manager
 from flask_login import login_user, login_required, logout_user
-
+from sqlalchemy.exc import IntegrityError
 
 @app.route('/')
 def index():
@@ -37,16 +37,19 @@ def login():
     return render_template('login.html', form=form)
 
 
-# Route for registration
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-    if form.validate_on_submit():  # If the form is submitted and validated
+    if form.validate_on_submit():
         user = User(email=form.email.data, username=form.username.data, password=form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash("Registration successful! You can now log in.", 'success')
-        return redirect(url_for('login'))  # Redirect to login page
+        try:
+            db.session.add(user)
+            db.session.commit()
+            flash("Registration successful! You can now log in.", 'success')
+        except IntegrityError:
+            db.session.rollback()  # Revert any database changes
+            flash("Username already exists. Please choose a different username.", 'error')
+        return render_template('register.html', form=form)
     return render_template('register.html', form=form)
 
 

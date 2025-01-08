@@ -6,7 +6,12 @@
     background-color: blue;
     justify-content: space-between; /* Adjust as needed */
 }
-
+.nav-link {
+    color: white; /* Example color (blue) */
+    font-weight: bold; /* Example font weight */
+    text-decoration: none; /* Example removing underline */
+    margin-right: 0px; /* Example margin */
+}
 
 .navtext {
     color: white; /* Example color (blue) */
